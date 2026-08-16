@@ -8,6 +8,7 @@
 |---|---|---|---|
 | `@dsh-external/dsh-plugin-leaderboard` | 本仓库 `packages/dsh-plugin-leaderboard` | ✅ 已注入 | 输入框旁 🏆 按钮 → 插件使用频率排行榜面板 |
 | `@dsh-external/dsh-file-upload` | 本仓库 `packages/dsh-file-upload` | ✅ 已注入 | 输入框旁 📎 按钮（多选）+ 任意非图片文件可拖拽/粘贴上传 |
+| `@dsh-external/dsh-skill-inspector` | 本仓库 `packages/dsh-skill-inspector` | ✅ 已注入 | 输入框旁 📚 按钮 → 本地技能清单 + frontmatter 合法性校验 |
 
 ## 二、历史遗留（未进本仓库）
 

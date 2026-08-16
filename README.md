@@ -11,6 +11,7 @@ DSH 是「万物皆插件」的 agent 框架（`dsh --profile web` 启动的网�
 |---|---|---|
 | [`packages/dsh-plugin-leaderboard`](packages/dsh-plugin-leaderboard) | hybrid（host 统计 + UI 按钮） | **插件使用频率排行榜**：统计每次工具调用，按「工具 → 归属插件」聚合，输入框旁 🏆 一键查看 |
 | [`packages/dsh-file-upload`](packages/dsh-file-upload) | hybrid（host 存储 + UI 按钮/拖拽） | **任意文件上传**：多选按钮 + 页面级拖拽/粘贴拦截，非图片文件落到会话工作区 `.dsh/references/`，以 `[参考文件：x](<路径>)` 插入草稿 |
+| [`packages/dsh-skill-inspector`](packages/dsh-skill-inspector) | hybrid（host 检查 + UI 按钮） | **Skills 检查器**：列出本地全部技能、校验 frontmatter（kebab-case 命名、目录同名、description 必填）、显示目录来源，输入框旁 📚 一键查看 |
 | [`config/reasoning-effort`](config/reasoning-effort) | 配置模板（非插件） | **中转站模型思考强度适配**：给自定义 gpt/claude/grok 路由声明 `reasoningEfforts`，让思考强度选择器生效 |
 
 ## 安装（注入）
