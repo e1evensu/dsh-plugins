@@ -33,13 +33,35 @@ interface Leaderboard {
 const CONTAINER: Record<string, string | number> = {
   fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
   fontSize: '13px',
-  color: 'var(--dsw-text, #e6e6e6)',
+  color: 'var(--dsw-text, #111827)',
   padding: '4px 0',
+  width: '100%',
+  maxWidth: '640px',
+  boxSizing: 'border-box',
+  overflowX: 'hidden',
 }
 
-const MUTED: Record<string, string | number> = { color: 'var(--dsw-text-muted, #9a9a9a)' }
-const ROW: Record<string, string | number> = { display: 'flex', justifyContent: 'space-between', gap: 12, padding: '6px 0' }
-const BAR_TRACK: Record<string, string | number> = { height: '6px', background: 'var(--dsw-border, #333)', borderRadius: '3px', marginBottom: '2px' }
+const MUTED: Record<string, string | number> = { color: 'var(--dsw-text-secondary, #6b7280)' }
+/** Plugin rows carry the primary text weight; the bar and drill-down stay quiet. */
+const ROW: Record<string, string | number> = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'baseline',
+  gap: 12,
+  padding: '2px 0 4px',
+  color: 'var(--dsw-text, #111827)',
+  fontWeight: 600,
+}
+const COUNT: Record<string, string | number> = { flex: 'none', fontVariantNumeric: 'tabular-nums' }
+const BAR_TRACK: Record<string, string | number> = {
+  height: '6px',
+  width: '100%',
+  maxWidth: '100%',
+  background: 'var(--dsw-bg-sunken, rgba(127,127,127,0.18))',
+  borderRadius: '3px',
+  marginBottom: '4px',
+  overflow: 'hidden',
+}
 const BAR: Record<string, string | number> = { height: '6px', background: 'var(--dsw-accent, #4d7cfe)', borderRadius: '3px' }
 
 function LeaderboardSection(props: any): ReturnType<typeof createElement> {
@@ -110,10 +132,10 @@ function LeaderboardSection(props: any): ReturnType<typeof createElement> {
           .sort((left, right) => right[1] - left[1])
           .map(([tool, count]) =>
             createElement('div', { key: tool, style: { paddingLeft: 16, ...MUTED } }, `${tool} · ${count}`))
-        return createElement('div', { key: row.plugin, style: { marginBottom: 10 } },
+        return createElement('div', { key: row.plugin, style: { marginBottom: 10, maxWidth: '100%' } },
           createElement('div', { style: ROW },
             createElement('span', null, `${index + 1}. ${row.plugin}`),
-            createElement('span', null, String(row.total)),
+            createElement('span', { style: COUNT }, `${row.total} 次`),
           ),
           createElement('div', { style: BAR_TRACK },
             createElement('div', { style: { ...BAR, width: `${Math.max(2, Math.round((row.total / max) * 100))}%` } }),
