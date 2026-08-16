@@ -1,0 +1,5 @@
+# dsh bundle patch —— `dsh plugin --profile web add <source>` 安装后自动插入
+- insert:
+    - id: dsh-skill-inspector
+      name: '@dsh-external/dsh-skill-inspector'
+      inject: [webServer]

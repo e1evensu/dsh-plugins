@@ -1,0 +1,5 @@
+# dsh bundle patch —— `dsh plugin --profile web add <source>` 安装后自动插入
+- insert:
+    - id: dsh-file-upload
+      name: '@dsh-external/dsh-file-upload'
+      inject: [webServer, sessions]

@@ -14,9 +14,21 @@ DSH 是「万物皆插件」的 agent 框架（`dsh --profile web` 启动的网�
 | [`packages/dsh-skill-inspector`](packages/dsh-skill-inspector) | hybrid（可选，默认不注入） | Skills 检查器：只读列出本地技能与 frontmatter 校验。日常使用价值低，默认不装；需要时可自行构建注入 |
 | [`config/reasoning-effort`](config/reasoning-effort) | 配置模板（非插件） | **中转站模型思考强度适配**：给自定义 gpt/claude/grok 路由声明 `reasoningEfforts`，让思考强度选择器生效 |
 
-## 安装（注入）
+## 安装（两种方式）
 
-所有插件通过 `dsh-super-injector` 运行时注入，**不需要重启 DSH、不需要改 profile**：
+所有插件均带标准 `dsh.bundle` 清单（`cordis.patch.yml`），与 awesome-dsh-plugin 生态一致。
+
+### 方式一：官方 CLI（标准，重启后生效）
+
+```bash
+# 本地目录
+dsh plugin --profile web add file:/path/to/dsh-plugins/packages/dsh-file-upload
+
+# 发布到 GitHub 后（推荐）
+dsh plugin --profile web add github:e1evensu/dsh-plugins
+```
+
+### 方式二：dsh-super-injector 运行时注入（免重启）
 
 ```bash
 # 1. 构建（DSH_CHECKOUT 指向 deepseek-harness 源码 checkout）
