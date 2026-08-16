@@ -163,22 +163,27 @@ function UploadDock(props: any): any {
     ? { color: '#d33', fontSize: 12, marginLeft: 4 }
     : { color: '#2a2', fontSize: 12, marginLeft: 4 }
 
-  return createElement('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 4, marginRight: 2 } },
+  return createElement('span', { style: { display: 'inline-flex', alignItems: 'center', alignSelf: 'flex-start', gap: 4, marginRight: 4 } },
     createElement('button', {
       type: 'button',
       title: '上传任意文件到当前工作区（支持多选；也可直接拖拽非图片文件到页面任意位置）',
       disabled: uploading,
       onClick: () => inputRef.current?.click(),
       style: {
-        border: 'none',
-        background: 'transparent',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 6,
+        padding: '3px 10px',
+        border: '1px solid var(--dsw-border, #444)',
+        borderRadius: '999px',
+        background: 'var(--dsw-bg-raised, rgba(255,255,255,0.06))',
         cursor: uploading ? 'not-allowed' : 'pointer',
-        fontSize: 16,
+        fontSize: 12,
         lineHeight: 1,
-        padding: '4px 6px',
-        opacity: uploading ? 0.4 : 0.85,
+        color: 'inherit',
+        opacity: uploading ? 0.4 : 0.9,
       },
-    }, uploading ? '⏳' : '📎'),
+    }, uploading ? '⏳ 上传中' : '📎 上传'),
     createElement('input', {
       ref: inputRef,
       type: 'file',

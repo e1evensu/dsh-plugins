@@ -84,20 +84,32 @@ function SkillInspectorButton(_props: unknown): ReturnType<typeof createElement>
 
   const button = createElement('button', {
     type: 'button',
-    title: 'Skills 检查器（本地技能清单与 frontmatter 校验）',
+    title: 'Skills 检查器（点击展开/收起）',
     onClick: () => setOpen(value => !value),
     style: {
-      border: 'none',
-      background: 'transparent',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 6,
+      padding: '3px 10px',
+      border: '1px solid var(--dsw-border, #444)',
+      borderRadius: '999px',
+      background: 'var(--dsw-bg-raised, rgba(255,255,255,0.06))',
       cursor: 'pointer',
-      fontSize: 16,
+      fontSize: 12,
       lineHeight: 1,
-      padding: '4px 6px',
-      opacity: 0.85,
+      color: 'inherit',
+      opacity: 0.9,
     },
-  }, '📚')
+  }, '📚 技能')
 
-  if (!open) return button
+  // Always render inside the inline wrapper so the dock lays the button out
+  // as a compact inline item — returning the bare button lets the dock's flex
+  // container stretch it to full width.
+  if (!open) {
+    return createElement('span', { style: { display: 'inline-flex', alignItems: 'center', alignSelf: 'flex-start', marginRight: 4 } },
+      button,
+    )
+  }
 
   const renderSkill = (skill: SkillEntry): ReturnType<typeof createElement> => {
     const badge = skill.valid
